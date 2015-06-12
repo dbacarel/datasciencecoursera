@@ -24,18 +24,12 @@ corr <- function(directory, threshold = 0) {
     df_files <- lapply(filenames,read.csv)
     
     for(df in df_files){
-        #Complete cases satisfy threashold?
+        #Complete cases satisfy the threashold?
         cp <-sum(complete.cases(df))
             if(cp>=threshold){
-                
-                
-                #Obtain complete case rows
-             
-                
-                #str(complete_case_rows)
+
                 #Calculate correlation
                 corr <- cor(df$sulfate, df$nitrate,"pairwise.complete.obs")
-                #print(corr)
                 #Add correlation list for this monitor location
                 corr_list <- c(corr_list, corr)
             }
